@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Алёна — афрокосы, брейды и дреды в Вологде</title>
+<meta name="description" content="Афрокосы, брейды, дреды в Вологде. Запись через ВКонтакте.">
+
+<script>
+/* ============================================================
+   ГАЛЕРЕЯ: чтобы добавить фото —
+   1) загрузи файл в папку photos/
+   2) допиши его имя сюда в кавычках, через запятую
+   ============================================================ */
+const GALLERY = [
+  "example1.jpg",
+  "example2.jpg",
+  "example3.jpg",
+];
+
+/* ССЫЛКИ ДЛЯ ЗАПИСИ */
+const LINKS = {
+  vkGroup:  "https://vk.ru/alena_afrokosy_vologda", // главный способ записи
+  vkOwner:  "https://vk.ru/alenarvizual",
+  telegram: "https://t.me/ВАШ_НИК",                 // заменить
+  instagram:"https://instagram.com/ВАШ_НИК",        // заменить
+};
+</script>
+
+<style>
+  :root{
+    --bg:#fffaf5; --card:#ffffff; --text:#2b2320; --muted:#7a6f68;
+    --accent:#0077ff; --accent2:#e2551f; --border:#eee1d6;
+    --shadow:0 6px 24px rgba(60,40,20,.08);
+  }
+  [data-theme="dark"]{
+    --bg:#17130f; --card:#221c17; --text:#f2e9e1; --muted:#a99c92;
+    --accent:#4d9aff; --accent2:#ff7a45; --border:#352c25;
+    --shadow:0 6px 24px rgba(0,0,0,.4);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:Georgia,'Times New Roman',serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .3s,color .3s}
+  a{color:var(--accent)}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+
+  header{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--border);z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:10px;flex-wrap:wrap}
+  .logo{font-weight:bold;font-size:1.15rem}
+  .nav a.link{color:var(--text);text-decoration:none;margin:0 8px;font-size:.95rem}
+  .nav a.link:hover{color:var(--accent2)}
+  #themeBtn{background:var(--card);border:1px solid var(--border);border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer}
+
+  .hero{text-align:center;padding:70px 0 60px}
+  .hero h1{font-size:2.2rem;margin-bottom:14px}
+  .hero p{color:var(--muted);max-width:560px;margin:0 auto 28px}
+  .btn{display:inline-block;padding:14px 28px;border-radius:30px;text-decoration:none;font-weight:bold;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-vk{background:var(--accent);color:#fff;font-size:1.05rem}
+  .btn-ghost{border:2px solid var(--accent2);color:var(--accent2);margin-left:10px}
+
+  section{padding:55px 0}
+  h2{font-size:1.7rem;margin-bottom:26px;text-align:center}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+  .card h3{margin-bottom:8px;color:var(--accent2)}
+  .price{font-weight:bold;margin-top:10px}
+
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+  .gallery img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:14px;box-shadow:var(--shadow)}
+
+  details{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+  summary{cursor:pointer;font-weight:bold}
+  details p{margin-top:8px;color:var(--muted)}
+
+  .contact-box{text-align:center}
+  .socials{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:20px}
+  .soc{padding:12px 22px;border-radius:12px;text-decoration:none;border:1px solid var(--border);background:var(--card);color:var(--text)}
+  .soc.main{background:var(--accent);color:#fff;border:none;font-weight:bold;font-size:1.05rem}
+
+  footer{border-top:1px solid var(--border);padding:24px 0;text-align:center;color:var(--muted);font-size:.9rem}
+
+  .float-vk{position:fixed;right:18px;bottom:18px;background:var(--accent);color:#fff;
+    padding:14px 20px;border-radius:30px;text-decoration:none;font-weight:bold;box-shadow:var(--shadow);z-index:20}
+
+  @media(max-width:600px){.hero h1{font-size:1.6rem}.btn-ghost{margin:10px 0 0}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">✨ Алёна • Афрокосы Вологда</div>
+    <nav>
+      <a class="link" href="#services">Услуги</a>
+      <a class="link" href="#gallery">Работы</a>
+      <a class="link" href="#faq">Вопросы</a>
+      <a class="link" href="#contacts">Запись</a>
+    </nav>
+    <button id="themeBtn" title="Переключить тему">🌙</button>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <h1>Афрокосы, брейды и дреды в Вологде</h1>
+  <p>Аккуратное плетение, качественные материалы и причёска, которая держится неделями. Запись — в пару кликов через ВКонтакте.</p>
+  <a class="btn btn-vk" id="heroVk" href="#">💬 Записаться во ВКонтакте</a>
+  <a class="btn btn-ghost" href="#services">Цены и услуги</a>
+</section>
+
+<section id="services" class="wrap">
+  <h2>Услуги и цены</h2>
+  <div class="cards">
+    <div class="card"><h3>Афрокосы</h3><p>Классика с канекалоном, любой цвет и длина.</p><p class="price">от ____ ₽ • ~ __ ч</p></div>
+    <div class="card"><h3>Брейды</h3><p>Плетение по голове, мужские и женские варианты.</p><p class="price">от ____ ₽ • ~ __ ч</p></div>
+    <div class="card"><h3>Дреды (де)</h3><p>Безопасные съёмные дреды из канекалона.</p><p class="price">от ____ ₽ • ~ __ ч</p></div>
+    <div class="card"><h3>Зизи / твисты</h3><p>Лёгкие быстрые косички и сенегальские твисты.</p><p class="price">от ____ ₽ • ~ __ ч</p></div>
+  </div>
+  <p style="text-align:center;margin-top:18px;color:var(--muted)">Точную стоимость подскажу в сообщениях — напиши в ВК 💙</p>
+</section>
+
+<section id="gallery" class="wrap">
+  <h2>Мои работы</h2>
+  <div class="gallery" id="galleryGrid"></div>
+</section>
+
+<section id="faq" class="wrap">
+  <h2>Частые вопросы</h2>
+  <details><summary>Сколько носятся косы?</summary><p>В среднем 1–2 месяца в зависимости от типа плетения и ухода.</p></details>
+  <details><summary>Какая длина волос нужна?</summary><p>Обычно достаточно от 5–7 см — на консультации посмотрим твой случай.</p></details>
+  <details><summary>Это больно?</summary><p>Нет, плету комфортно, без чрезмерного натяжения.</p></details>
+  <details><summary>Как ухаживать?</summary><p>Расскажу и дам памятку после плетения.</p></details>
+</section>
+
+<section id="contacts" class="wrap contact-box">
+  <h2>Запись</h2>
+  <p>Основной способ записи — <b>сообщество ВКонтакте</b>: там свободные даты, прайс и ответы на вопросы.</p>
+  <div class="socials">
+    <a class="soc main" id="vkMain" href="#">💙 ВКонтакте — записаться</a>
+    <a class="soc" id="tgLink" href="#">Telegram</a>
+    <a class="soc" id="igLink" href="#">Instagram*</a>
+  </div>
+  <p style="margin-top:16px;color:var(--muted)">Мастер: <a id="vkOwner" href="#">Алёна во ВКонтакте</a></p>
+</section>
+
+<footer>
+  <p>© <span id="year"></span> Алёна • Афрокосы Вологда<br>
+  <small>*Instagram принадлежит Meta, признанной экстремистской организацией и запрещённой в РФ</small></p>
+</footer>
+
+<a class="float-vk" id="floatVk" href="#">💬 Запись в ВК</a>
+
+<script>
+  // подставляем ссылки
+  for (const [id,url] of [["heroVk",LINKS.vkGroup],["vkMain",LINKS.vkGroup],
+      ["floatVk",LINKS.vkGroup],["vkOwner",LINKS.vkOwner],
+      ["tgLink",LINKS.telegram],["igLink",LINKS.instagram]]) {
+    const el=document.getElementById(id); el.href=url; el.target="_blank"; el.rel="noopener";
+  }
+
+  // галерея из списка GALLERY
+  const grid=document.getElementById("galleryGrid");
+  GALLERY.forEach(f=>{
+    const img=document.createElement("img");
+    img.src="photos/"+f; img.alt="Работа мастера"; img.loading="lazy";
+    grid.appendChild(img);
+  });
+
+  // тема: светлая/тёмная, с запоминанием
+  const btn=document.getElementById("themeBtn");
+  const saved=localStorage.getItem("theme");
+  if(saved==="dark"||(!saved&&matchMedia("(prefers-color-scheme: dark)").matches)){
+    document.documentElement.dataset.theme="dark"; btn.textContent="☀️";
+  }
+  btn.onclick=()=>{
+    const dark=document.documentElement.dataset.theme==="dark";
+    document.documentElement.dataset.theme=dark?"":"dark";
+    btn.textContent=dark?"🌙":"☀️";
+    localStorage.setItem("theme",dark?"light":"dark");
+  };
+
+  document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
