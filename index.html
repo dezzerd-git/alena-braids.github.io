@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Алёна — афрокосы, брейды и дреды в Вологде</title>
+<title>Студия кос Алёны Ростовцевой в Вологде</title>
 <meta name="description" content="Афрокосы, брейды, дреды в Вологде. Запись через ВКонтакте.">
 
 <script>
@@ -32,14 +32,21 @@ const LINKS = {
     --bg:#fffaf5; --card:#ffffff; --text:#2b2320; --muted:#7a6f68;
     --accent:#0077ff; --accent2:#e2551f; --border:#eee1d6;
     --shadow:0 6px 24px rgba(60,40,20,.08);
+    --overlay:linear-gradient(rgba(255,250,245,.86),rgba(255,250,245,.86));
   }
   [data-theme="dark"]{
     --bg:#17130f; --card:#221c17; --text:#f2e9e1; --muted:#a99c92;
     --accent:#4d9aff; --accent2:#ff7a45; --border:#352c25;
     --shadow:0 6px 24px rgba(0,0,0,.4);
+    --overlay:linear-gradient(rgba(23,19,15,.86),rgba(23,19,15,.86));
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:Georgia,'Times New Roman',serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .3s,color .3s}
+  body::before{content:"";position:fixed;inset:0;z-index:-1;
+    background:var(--overlay), url("photos/image-1.jpg") center/cover no-repeat}
+  @media(max-width:600px){
+    body::before{background:var(--overlay), url("photos/image-2.jpg") center/cover no-repeat}
+  }
   a{color:var(--accent)}
   .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
 
@@ -65,8 +72,16 @@ const LINKS = {
   .card h3{margin-bottom:8px;color:var(--accent2)}
   .price{font-weight:bold;margin-top:10px}
 
-  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
-  .gallery img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:14px;box-shadow:var(--shadow)}
+  .slider-box{position:relative;max-width:480px;margin:0 auto}
+  .gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch;border-radius:14px}
+  .gallery::-webkit-scrollbar{display:none}
+  .gallery img{flex:0 0 100%;scroll-snap-align:center;aspect-ratio:3/4;
+    object-fit:cover;border-radius:14px;box-shadow:var(--shadow)}
+  .slide-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+    background:var(--card);color:var(--text);border:1px solid var(--border);
+    border-radius:50%;width:42px;height:42px;font-size:1.2rem;cursor:pointer;box-shadow:var(--shadow)}
+  .slide-btn.prev{left:-8px}.slide-btn.next{right:-8px}
 
   details{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px}
   summary{cursor:pointer;font-weight:bold}
@@ -101,7 +116,7 @@ const LINKS = {
 </header>
 
 <section class="hero wrap">
-  <h1>Афрокосы, брейды и дреды в Вологде</h1>
+  <h1>Студия кос Алёны Ростовцевой в Вологде</h1>
   <p>Аккуратное плетение, качественные материалы и причёска, которая держится неделями. Запись — в пару кликов через ВКонтакте.</p>
   <a class="btn btn-vk" id="heroVk" href="#">💬 Записаться во ВКонтакте</a>
   <a class="btn btn-ghost" href="#services">Цены и услуги</a>
@@ -127,7 +142,11 @@ const LINKS = {
 
 <section id="gallery" class="wrap">
   <h2>Мои работы</h2>
-  <div class="gallery" id="galleryGrid"></div>
+  <div class="slider-box">
+    <button class="slide-btn prev" id="slidePrev">‹</button>
+    <div class="gallery" id="galleryGrid"></div>
+    <button class="slide-btn next" id="slideNext">›</button>
+  </div>
 </section>
 
 <section id="faq" class="wrap">
@@ -150,7 +169,7 @@ const LINKS = {
 </section>
 
 <footer>
-  <p>© <span id="year"></span> Алёна • Афрокосы Вологда<br>
+  <p>© <span id="year"></span> Студия кос Алёны Ростовцевой • Вологда<br>
   <small>*Instagram принадлежит Meta, признанной экстремистской организацией и запрещённой в РФ</small></p>
 </footer>
 
@@ -171,6 +190,12 @@ const LINKS = {
     img.src="photos/"+f; img.alt="Работа мастера"; img.loading="lazy";
     grid.appendChild(img);
   });
+
+  // стрелки слайдера
+  const slider=document.getElementById("galleryGrid");
+  const step=()=>slider.clientWidth+12; // ширина фото + отступ
+  document.getElementById("slidePrev").onclick=()=>slider.scrollBy({left:-step(),behavior:"smooth"});
+  document.getElementById("slideNext").onclick=()=>slider.scrollBy({left:step(),behavior:"smooth"});
 
   // тема: светлая/тёмная, с запоминанием
   const btn=document.getElementById("themeBtn");
